@@ -7,7 +7,7 @@ void my_putchar(char c)
 {
 	static char BUFFER[SIZE_BUFFER];
 	static size_t i;
-	
+
 	i = 0;
 	BUFFER[i++] = c;
 	if (i == SIZE_BUFFER)
@@ -30,7 +30,7 @@ void my_putchar(char c)
 int my_puts(char *str)
 {
 	int byte;
-	
+
 	byte = write(STDOUT_FILENO, str, strlen(str));
 	if (byte == -1)
 	{
@@ -47,7 +47,7 @@ void errputchar(char c)
 {
 	static char BUFFER[SIZE_BUFFER];
 	static size_t i;
-	
+
 	i = 0;
 	BUFFER[i++] = c;
 	if (i == SIZE_BUFFER)
@@ -70,7 +70,7 @@ void errputchar(char c)
 int errputs(char *str)
 {
 	int byte;
-	
+
 	byte = write(STDERR_FILENO, str, strlen(str));
 	if (byte == -1)
 	{
