@@ -16,9 +16,10 @@ void cmd_setenv(CommandList *shell, int index)
 	while (shell->env[i])
 	{
 		if (my_strncmp(command->arguments[1], shell->env[i],
-					   my_strlen(command->arguments[1])) == 0)
+					my_strlen(command->arguments[1])) == 0)
 		{
-			shell->env[i] = my_realloc(shell->env[i], my_strlen(command->arguments[1]) + my_strlen(command->arguments[2]) + 2, my_strlen(shell->env[i]));
+			shell->env[i] = my_realloc(shell->env[i], my_strlen(command->arguments[1])
+					+ my_strlen(command->arguments[2]) + 2, my_strlen(shell->env[i]));
 			my_strcpy(shell->env[i], command->arguments[1]);
 			my_strcat(shell->env[i], "=");
 			my_strcat(shell->env[i], command->arguments[2]);
@@ -26,12 +27,13 @@ void cmd_setenv(CommandList *shell, int index)
 		}
 		total_size += my_strlen(shell->env[i]) + 1;
 		i++;
-		
 	}
 	if (check == 0)
 	{
-		shell->env = my_realloc(shell->env, (i + 1) * sizeof(char *), total_size + sizeof(char *));
-		shell->env[i] = my_realloc(shell->env[i], my_strlen(command->arguments[1]) + my_strlen(command->arguments[2]) + 2, my_strlen(shell->env[i]));
+		shell->env = my_realloc(shell->env, (i + 1) * sizeof(char *),
+				total_size + sizeof(char *));
+		shell->env[i] = my_realloc(shell->env[i], my_strlen(command->arguments[1])
+				+ my_strlen(command->arguments[2]) + 2, my_strlen(shell->env[i]));
 		my_strcpy(shell->env[i], command->arguments[1]);
 		my_strcat(shell->env[i], "=");
 		my_strcat(shell->env[i], command->arguments[2]);
